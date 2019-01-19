@@ -1,0 +1,36 @@
+project.version '0.1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.3.11'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    flatDir {
+        dirs 'lib'
+    }
+    jcenter()
+}
+
+configurations {
+    distro
+}
+
+dependencies {
+    compile name: 'bgbilling-kernel-7.1_1076'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    distro "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+jar {
+    from configurations.distro.collect { it.isDirectory() ? it : zipTree(it) }
+}
