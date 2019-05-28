@@ -26,7 +26,7 @@ configurations {
 dependencies {
     compile name: 'bgbilling-kernel-7.1_1076'
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
-    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17-atlassian-1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     distro "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
