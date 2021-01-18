@@ -1,8 +1,6 @@
 package com.github.alexanderfefelov.bgbilling.servlet.demo
 
-import bitel.billing.server.Server
 import org.apache.log4j.Logger
-import ru.bitel.bgbilling.server.util.ServerUtils
 import ru.bitel.common.logging.NestedContext
 import javax.servlet.*
 import javax.servlet.http.HttpServletResponse
@@ -22,7 +20,7 @@ class TerryPratchettFilterKotlin : Filter {
 
         chain.doFilter(request, response)
         val httpResponse = response as HttpServletResponse
-        httpResponse.addHeader("X-BGBilling-Server-Uptime", ServerUtils.uptimeStatus(Server.START_TIME))
+        httpResponse.addHeader("X-Clacks-Overhead", "GNU Terry Pratchett")
     }
 
     private fun <R> wrap(block: () -> R) {
